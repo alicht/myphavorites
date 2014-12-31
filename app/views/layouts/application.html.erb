@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Myphavorites</title>
+  <title>My Phavorites</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+	<% if current_user %>
+    	<li> <a> Signed in as @<%= current_user.name %> </a> </li>
+    	<li>  <%= link_to "Sign out", signout_path %> </li>
+    <% else %>
+         <li> <%= link_to "Sign in with Twitter", "/auth/twitter" %> </li>
+    <% end %>
 
 <%= yield %>
 
